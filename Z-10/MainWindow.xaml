@@ -1,0 +1,57 @@
+﻿<Window x:Class="Z_10.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Z_10"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="891.862">
+    <Grid Margin="0,0,0.333,-0.333">
+
+        <Grid x:Name="Single" HorizontalAlignment="Left" Height="378" Margin="683,10,0,0" VerticalAlignment="Top" Width="192" RenderTransformOrigin="0.624,0.52">
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="0,10,0,0" TextWrapping="Wrap" Text="{Binding Id}" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="t2" HorizontalAlignment="Left" Height="23" Margin="0,38,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="0,66,0,0" TextWrapping="Wrap" Text="{Binding LastName}" VerticalAlignment="Top" Width="120"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="0,94,0,0" TextWrapping="Wrap" Text="{Binding FullName,Mode=OneWay}" VerticalAlignment="Top" Width="120"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="0,122,0,0" TextWrapping="Wrap" Text="{Binding EnlistingDate}" VerticalAlignment="Top" Width="120"/>
+            <Calendar HorizontalAlignment="Left" Margin="0,150,0,0" VerticalAlignment="Top" DisplayDate="{Binding EnlistingDate,Mode=OneWay}" SelectedDate="{Binding EnlistingDate}" Height="169" Width="180"/>
+        </Grid>
+        <Grid x:Name="Multiple" HorizontalAlignment="Left" Height="401" Margin="10,10,0,0" VerticalAlignment="Top" Width="586">
+            <ListBox x:Name="StudentLB" HorizontalAlignment="Left" Height="381" Margin="299,10,-50,0" VerticalAlignment="Top" Width="337">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                            <StackPanel Orientation="Vertical">
+                                <TextBox HorizontalAlignment="Left"   TextWrapping="Wrap" Text="{Binding Id}"/>
+                                <TextBox HorizontalAlignment="Left"   TextWrapping="Wrap" Text="{Binding Name}" />
+                                <TextBox HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding LastName}"/>
+                                <TextBox HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding FullName,Mode=OneWay}" />
+                                <TextBox HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding EnlistingDate}" />
+                            </StackPanel>
+                            <Calendar HorizontalAlignment="Left" DisplayDate="{Binding EnlistingDate,Mode=OneWay}" SelectedDate="{Binding EnlistingDate}" Height="169" Width="180"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <ListView x:Name="StudentLV" Width="284" Margin="10,10,292,10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Identyfikator" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn  DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn  DisplayMemberBinding="{Binding LastName}"/>
+                        <GridViewColumn  DisplayMemberBinding="{Binding FullName}"/>
+                        <GridViewColumn  Header="Text" DisplayMemberBinding="{Binding EnlistingDate}"/>
+                        <GridViewColumn  Header="Kalendarz">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Calendar DisplayDate="{Binding EnlistingDate,Mode=OneWay}" SelectedDate="{Binding EnlistingDate}" Height="169" Width="180"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
+    </Grid>
+</Window>
